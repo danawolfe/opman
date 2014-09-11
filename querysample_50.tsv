@@ -1,0 +1,51 @@
+RiskValue	RiskCategory	TransactionNumber	DescriptionofaTransaction	SalesOffice	EmployeeResponsible	AnalysisStage	CurrentPhase	OppAgeRange	StageAgeRange	StartOpp	CloseDate	Priority	SalesVolume(w)	SalesVolume	Probability	OpportunityAge	DaysinStage
+1	1 - HIGH	81580	7MM - SKANSKA- HESS POWER PLANT	Inactive New York	Jason Doody	Info Exchange	Info Exchange	> 180 Days	> 60 Days	12/18/2012	5/30/2014	Targeted Opportunity	134700	224500	60	616	596
+0.69	2 - MED-HIGH	81750	BREAKOUT-ARI, MARMADUKE-MAGNUM	Memphis	Thomas Brown	Proposal / Quotation	Proposal / Quotation	91 - 180 Days	> 60 Days	4/24/2014	8/1/2014	Targeted Opportunity	270000	450000	60	124	111
+1	1 - HIGH	81805	CAT JOLIET - AUTOMATION - HOT WIRE TANDE	Chicago	Andy Divin	Solution Development	Solution Development	> 180 Days	> 60 Days	12/1/2012	3/31/2014	Targeted Opportunity	330000	440000	75	633	595
+1	1 - HIGH	81818	LENAWEE STAMPING TO PURCHASE SG 4043	Detroit	John Ludwig	Info Exchange	Info Exchange	> 180 Days	> 60 Days	1/2/2013	2/28/2013	Targeted Opportunity	69000	115000	60	601	586
+1	1 - HIGH	81825	ESAB - HORN EQUIPMENT - EXCALIBUR 10018	Tulsa	Philip Beauchamp	Decision Making	Decision Making	> 180 Days	> 60 Days	12/4/2012	1/31/2013	Targeted Opportunity	27075	36100	75	630	596
+1	1 - HIGH	81832	7MM - FISHER PLOW, SUPERARC L56, 59	Boston	Adam Fallon	Decision Making	Decision Making	> 180 Days	> 60 Days	9/20/2012	8/11/2014	Targeted Opportunity	118501.14	237002.28	50	705	477
+1	1 - HIGH	81872	LONESTAR COLLEGE - VRTEX 360	Houston	Darcy Hickman	Proposal / Quotation	Proposal / Quotation	> 180 Days	> 60 Days	12/3/2012	5/31/2013	Targeted Opportunity	20000	50000	40	631	595
+1	1 - HIGH	81915	7MM ALLOY - PITCO, TECHALLOY 309	Boston	Adam Fallon	Solution Development	Solution Development	> 180 Days	> 60 Days	1/17/2013	7/31/2014	Targeted Opportunity	75000	150000	50	586	586
+1	1 - HIGH	82033	PPP TO PURCHASE PWS350/STT PACKAGES	Detroit	John Ludwig	Info Exchange	Info Exchange	> 180 Days	> 60 Days	1/14/2013	2/28/2013	Targeted Opportunity	18720	46800	40	589	582
+1	1 - HIGH	82182	AXH COOLERS - MAGNUM GUN CONVERSION	Tulsa	David Thomas	Info Exchange	Info Exchange	> 180 Days	> 60 Days	1/2/2013	3/29/2013	Targeted Opportunity	35000	50000	70	601	572
+0.38	4 - MED-LOW	90257	AUTOMATION - ALASKAN COPPER - CUSTOM SYS	Northwest Sales Offc	Tim Honn	Proposal / Quotation	Proposal / Quotation	< 90 Days	> 60 Days	6/30/2014	8/31/2014	Targeted Opportunity	315000	450000	70	57	412
+1	1 - HIGH	90831	NEWPORT NEWS INDUSTRIAL SHIELD BLG	Cleveland-Factory	Jason Doody	Solution Development	Solution Development	> 180 Days	> 60 Days	1/4/2013	4/30/2013	Targeted Opportunity	202500	405000	50	599	564
+1	1 - HIGH	90855	SCHECK MECHANICAL - DIRECT CUSTOMER	Milwaukee	Michael Kersey	Solution Development	Solution Development	> 180 Days	> 60 Days	1/4/2013	3/30/2013	Targeted Opportunity	45500	70000	65	599	563
+1	1 - HIGH	90891	SKILLED TRADES/EDUCATION-UA 174-FUME SYS	Grand Rapids	Jon Althausen	Proposal / Quotation	Proposal / Quotation	> 180 Days	> 60 Days	12/12/2013	5/31/2014	Targeted Opportunity	37800	90000	42	257	562
+1	1 - HIGH	90909	EXPERT/VERACITY-625/812SRC-ALLOY	Baton Rouge	Matt Howerton	Solution Development	Solution Development	> 180 Days	> 60 Days	1/14/2014	7/30/2014	Targeted Opportunity	60000	200000	30	224	193
+0.3	4 - MED-LOW	90912	BREAKOUT - INTERMOUNTAIN LIFT - HDC	Salt Lake City	Jenny Farney	Solution Development	Solution Development	< 90 Days	< = 30 Days	7/31/2014	8/31/2014	Targeted Opportunity	24000	80000	30	26	26
+1	1 - HIGH	90973	AXH COOLERS - STAINLESS CONSUMABLES	Tulsa	David Thomas	Info Exchange	Info Exchange	> 180 Days	> 60 Days	4/24/2012	7/31/2013	Targeted Opportunity	140000	175000	80	854	552
+1	1 - HIGH	91208	ESAB...WEIR AMERICAN HYDRO...UC 308 FCP	Philadelphia	David Watson	Solution Development	Solution Development	> 180 Days	31 - 60 Days	2/25/2014	8/22/2014	Targeted Opportunity	90000	300000	30	182	48
+0.69	2 - MED-HIGH	91243	ESAB - NORTHWEST PIPE - L-61	Denver	Matt Rice	Solution Development	Solution Development	91 - 180 Days	> 60 Days	4/24/2014	8/1/2014	Targeted Opportunity	38576.7	128589	30	124	285
+1	1 - HIGH	91275	ALLOY- METAL TEK - METRODE	Milwaukee	Timothy Echan	Info Exchange	Info Exchange	> 180 Days	> 60 Days	3/20/2013	12/1/2014	Targeted Opportunity	500000	1000000	50	524	524
+1	1 - HIGH	91296	MARTINREA PURCHASE A HOT WIRE TANDEM	Detroit	John Ludwig	Info Exchange	Info Exchange	> 180 Days	> 60 Days	3/15/2013	5/31/2013	Targeted Opportunity	125000	250000	50	529	516
+0.78	2 - MED-HIGH	91301	ALLOY - HEIL TRAILER - 5356TM	Dallas	Chris Barret	Info Exchange	Info Exchange	91 - 180 Days	> 60 Days	4/7/2014	12/31/2014	Targeted Opportunity	38280	382800	10	141	141
+1	1 - HIGH	91304	GOLIGHTLY PURCHASD A VRTEX 360	Detroit	John Ludwig	Info Exchange	Info Exchange	> 180 Days	> 60 Days	3/4/2013	4/23/2013	Targeted Opportunity	24500	49000	50	540	519
+1	1 - HIGH	91305	ERNEST PURCHASE A 4 ARM CENTRAL EXHAUST	Detroit	John Ludwig	Info Exchange	Info Exchange	> 180 Days	> 60 Days	3/11/2013	4/30/2013	Targeted Opportunity	17250	34500	50	533	519
+1	1 - HIGH	91306	MARTINNREA PURCHASE 3 PUSH PULL SYSTEMS	Detroit	John Ludwig	Info Exchange	Info Exchange	> 180 Days	> 60 Days	3/4/2013	5/30/2013	Targeted Opportunity	256900	367000	70	540	519
+1	1 - HIGH	91361	AUTOMATION - BETTS SPRING - ROBOT	Northern California	Walter Aviko	Solution Development	Solution Development	> 180 Days	> 60 Days	3/1/2013	11/30/2013	Targeted Opportunity	90000	150000	60	543	530
+1	1 - HIGH	91427	BREAKOUT - TOWER - SUPERARC MIG	Cleveland	Aaron Oyster	Proposal / Quotation	Proposal / Quotation	> 180 Days	> 60 Days	11/1/2013	6/30/2014	Targeted Opportunity	94500	135000	70	298	140
+1	1 - HIGH	91470	A K  ALLEN CO- MIG AND TIG MACHINES	Philadelphia	MICHAEL SOTTILE	Solution Development	Solution Development	> 180 Days	> 60 Days	4/12/2013	5/31/2013	Targeted Opportunity	2800	14000	20	501	498
+0.69	2 - MED-HIGH	91533	BREAKOUT-DIDION MFG-MC706	Saint Louis	Bradley Wickline	Solution Development	Solution Development	91 - 180 Days	> 60 Days	4/24/2014	12/30/2014	Targeted Opportunity	6840	22800	30	124	109
+1	1 - HIGH	91545	TIMKEN-LC 414N	Cleveland	Theodore Pinnick	Decision Making	Decision Making	> 180 Days	> 60 Days	2/21/2013	5/24/2013	Targeted Opportunity	321804	357560	90	551	210
+0.69	2 - MED-HIGH	91546	BREAKOUT-ALLMAND BRO-MC80NI1-	Kansas City	Bruce Gregory	Proposal / Quotation	Proposal / Quotation	91 - 180 Days	> 60 Days	4/24/2014	6/30/2014	Targeted Opportunity	60000	120000	50	124	504
+0.69	2 - MED-HIGH	91573	ALLOY-VAN AM-BLUE MAX 308	Kansas City	Brian V Sullivan	Solution Development	Solution Development	91 - 180 Days	> 60 Days	4/24/2014	7/31/2014	Targeted Opportunity	30000	100000	30	124	113
+1	1 - HIGH	91580	FCAW - KEPPEL AMFELS - ULTRACORE	Houston	Matt Terrell	Solution Development	Solution Development	> 180 Days	> 60 Days	4/1/2013	4/30/2014	Targeted Opportunity	365000	730000	50	512	480
+1	1 - HIGH	91616	ALLOY: MICROFLEX - STAINLESS STEEL	Orlando	Jim Issa	Solution Development	Solution Development	> 180 Days	> 60 Days	4/1/2013	3/31/2014	Targeted Opportunity	45000	90000	50	512	481
+1	1 - HIGH	91631	NAPOTNIK WELDING - ROBOT	Pittsburgh	Warren Krueger	Info Exchange	Info Exchange	> 180 Days	> 60 Days	3/21/2013	6/20/2013	Targeted Opportunity	22500	90000	25	523	499
+1	1 - HIGH	91667	WIRE - SUPERIOR FAB - L59	Tulsa	Gerald Fleming	Solution Development	Solution Development	> 180 Days	> 60 Days	5/8/2013	8/29/2014	Targeted Opportunity	30000	50000	60	475	475
+1	1 - HIGH	91697	ALLOY - INDUSTRIAL FAB - TECHALLOY	Houston	Matt Terrell	Solution Development	Solution Development	> 180 Days	> 60 Days	4/1/2013	11/30/2013	Targeted Opportunity	24750	49500	50	512	236
+1	1 - HIGH	91818	ALLOY  KENNAMETAL,TRICON  LINCORE 65(NEW	Birmingham	Ronald Martucci	Decision Making	Decision Making	> 180 Days	> 60 Days	8/1/2013	7/31/2014	Targeted Opportunity	640000	800000	80	390	469
+0.99	1 - HIGH	91837	MACHINE - SFI - POWER WAVES S350	Tulsa	Gerald Fleming	Solution Development	Solution Development	91 - 180 Days	> 60 Days	3/1/2014	8/29/2014	Targeted Opportunity	8100	27000	30	178	453
+1	1 - HIGH	91858	7MM SCHOOL LOCAL 16  20 WELD SCHOOL	Washington	B.A. WYATT MANN	Proposal / Quotation	Proposal / Quotation	> 180 Days	> 60 Days	5/10/2013	6/30/2013	Targeted Opportunity	101250	135000	75	473	473
+0.82	1 - HIGH	91870	ALLOY-UNION PACIFIC-FROG MANG-DIRECT	Kansas City	Paul Hannen	Proposal / Quotation	Proposal / Quotation	91 - 180 Days	> 60 Days	4/1/2014	6/30/2014	Targeted Opportunity	175000	250000	70	147	109
+1	1 - HIGH	91928	MODERN TANK HARD AUTOMATION SAW	Cincinnati	Bobby Delcoco	Solution Development	Solution Development	> 180 Days	> 60 Days	5/14/2013	2/28/2014	Targeted Opportunity	200000	400000	50	469	463
+1	1 - HIGH	91954	7MM - BOARDMAN - STAINLESS	Tulsa	Gerald Fleming	Proposal / Quotation	Proposal / Quotation	> 180 Days	> 60 Days	5/14/2013	12/31/2013	Targeted Opportunity	140000	200000	70	469	469
+1	1 - HIGH	91958	HCC - ESAB - L-50 / L-56	Chicago	Andy Divin	Info Exchange	Info Exchange	> 180 Days	> 60 Days	4/26/2013	4/30/2014	Targeted Opportunity	133552.8	166941	80	487	469
+1	1 - HIGH	92107	ALLOY - ALSTOM POWER - HARDSURFACING	Dallas	Johnny Harvill	Solution Development	Solution Development	> 180 Days	> 60 Days	5/1/2013	12/31/2014	Targeted Opportunity	375000	1250000	30	482	419
+1	1 - HIGH	92130	EDUCATION-RICHLAND CC-NEW WELDING SCHOOL	Chicago	Andrew Young	Decision Making	Decision Making	> 180 Days	> 60 Days	6/28/2013	9/30/2014	Targeted Opportunity	125100	139000	90	424	115
+1	1 - HIGH	92245	SCHOOL - NTCC - CENTRAL SYS.	Dallas	Johnny Harvill	Decision Making	Decision Making	> 180 Days	> 60 Days	1/1/2013	12/31/2014	Targeted Opportunity	162000	180000	90	602	419
+1	1 - HIGH	92268	ALLOY-HOOVER-STAINLESS	Houston	Tara Napolillo	Proposal / Quotation	Proposal / Quotation	> 180 Days	> 60 Days	7/7/2013	7/7/2014	Targeted Opportunity	140000	200000	70	415	415
+1	1 - HIGH	92269	HOBART - PINNACLE MATERIALS - L-59 CONV	Dallas	Tony Treser	Info Exchange	Info Exchange	> 180 Days	> 60 Days	7/7/2013	1/31/2014	Targeted Opportunity	105000	210000	50	415	415
+1	1 - HIGH	92297	AUTOMATION/ENVIRONMENTAL-K LINE-SYS 55	Grand Rapids	Jon Althausen	Solution Development	Solution Development	> 180 Days	> 60 Days	11/28/2013	9/1/2014	Targeted Opportunity	120000	200000	60	271	414

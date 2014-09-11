@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Fun with Opportunity data 01</title>
+		<script type="text/javascript" src="../d3/d3.js"></script>
+        <script type="text/javascript" src="../crossfilter/crossfilter.js"></script>
+		<style type="text/css">
+			
+			.axis path,
+			.axis line {
+				fill: none;
+				stroke: black;
+				shape-rendering: crispEdges;
+			}
+			
+			.axis text {
+				font-family: sans-serif;
+				font-size: 11px;
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<script type="text/javascript">
+
+
+var oppts = ([
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":81580,
+    "DescriptionofaTransaction":"7MM - SKANSKA- HESS POWER PLANT",
+    "SalesOffice":"Inactive New York",
+    "EmployeeResponsible":"Jason Doody",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"12/18/2012",
+    "CloseDate":"5/30/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":134700,
+    "SalesVolume":224500,
+    "Probability":60,
+    "OpportunityAge":616,
+    "DaysinStage":596
+  },
+  {
+    "RiskValue":0.69,
+    "RiskCategory":"2 - MED-HIGH",
+    "TransactionNumber":81750,
+    "DescriptionofaTransaction":"BREAKOUT-ARI, MARMADUKE-MAGNUM",
+    "SalesOffice":"Memphis",
+    "EmployeeResponsible":"Thomas Brown",
+    "AnalysisStage":"Proposal / Quotation",
+    "CurrentPhase":"Proposal / Quotation",
+    "OppAgeRange":"91 - 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/24/2014",
+    "CloseDate":"8/1/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":270000,
+    "SalesVolume":450000,
+    "Probability":60,
+    "OpportunityAge":124,
+    "DaysinStage":111
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":81805,
+    "DescriptionofaTransaction":"CAT JOLIET - AUTOMATION - HOT WIRE TANDE",
+    "SalesOffice":"Chicago",
+    "EmployeeResponsible":"Andy Divin",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"12/1/2012",
+    "CloseDate":"3/31/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":330000,
+    "SalesVolume":440000,
+    "Probability":75,
+    "OpportunityAge":633,
+    "DaysinStage":595
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":81818,
+    "DescriptionofaTransaction":"LENAWEE STAMPING TO PURCHASE SG 4043",
+    "SalesOffice":"Detroit",
+    "EmployeeResponsible":"John Ludwig",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"1/2/2013",
+    "CloseDate":"2/28/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":69000,
+    "SalesVolume":115000,
+    "Probability":60,
+    "OpportunityAge":601,
+    "DaysinStage":586
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":81825,
+    "DescriptionofaTransaction":"ESAB - HORN EQUIPMENT - EXCALIBUR 10018",
+    "SalesOffice":"Tulsa",
+    "EmployeeResponsible":"Philip Beauchamp",
+    "AnalysisStage":"Decision Making",
+    "CurrentPhase":"Decision Making",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"12/4/2012",
+    "CloseDate":"1/31/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":27075,
+    "SalesVolume":36100,
+    "Probability":75,
+    "OpportunityAge":630,
+    "DaysinStage":596
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":81832,
+    "DescriptionofaTransaction":"7MM - FISHER PLOW, SUPERARC L56, 59",
+    "SalesOffice":"Boston",
+    "EmployeeResponsible":"Adam Fallon",
+    "AnalysisStage":"Decision Making",
+    "CurrentPhase":"Decision Making",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"9/20/2012",
+    "CloseDate":"8/11/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":118501.14,
+    "SalesVolume":237002.28,
+    "Probability":50,
+    "OpportunityAge":705,
+    "DaysinStage":477
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":81872,
+    "DescriptionofaTransaction":"LONESTAR COLLEGE - VRTEX 360",
+    "SalesOffice":"Houston",
+    "EmployeeResponsible":"Darcy Hickman",
+    "AnalysisStage":"Proposal / Quotation",
+    "CurrentPhase":"Proposal / Quotation",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"12/3/2012",
+    "CloseDate":"5/31/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":20000,
+    "SalesVolume":50000,
+    "Probability":40,
+    "OpportunityAge":631,
+    "DaysinStage":595
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":81915,
+    "DescriptionofaTransaction":"7MM ALLOY - PITCO, TECHALLOY 309",
+    "SalesOffice":"Boston",
+    "EmployeeResponsible":"Adam Fallon",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"1/17/2013",
+    "CloseDate":"7/31/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":75000,
+    "SalesVolume":150000,
+    "Probability":50,
+    "OpportunityAge":586,
+    "DaysinStage":586
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":82033,
+    "DescriptionofaTransaction":"PPP TO PURCHASE PWS350/STT PACKAGES",
+    "SalesOffice":"Detroit",
+    "EmployeeResponsible":"John Ludwig",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"1/14/2013",
+    "CloseDate":"2/28/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":18720,
+    "SalesVolume":46800,
+    "Probability":40,
+    "OpportunityAge":589,
+    "DaysinStage":582
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":82182,
+    "DescriptionofaTransaction":"AXH COOLERS - MAGNUM GUN CONVERSION",
+    "SalesOffice":"Tulsa",
+    "EmployeeResponsible":"David Thomas",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"1/2/2013",
+    "CloseDate":"3/29/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":35000,
+    "SalesVolume":50000,
+    "Probability":70,
+    "OpportunityAge":601,
+    "DaysinStage":572
+  },
+  {
+    "RiskValue":0.38,
+    "RiskCategory":"4 - MED-LOW",
+    "TransactionNumber":90257,
+    "DescriptionofaTransaction":"AUTOMATION - ALASKAN COPPER - CUSTOM SYS",
+    "SalesOffice":"Northwest Sales Offc",
+    "EmployeeResponsible":"Tim Honn",
+    "AnalysisStage":"Proposal / Quotation",
+    "CurrentPhase":"Proposal / Quotation",
+    "OppAgeRange":"< 90 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"6/30/2014",
+    "CloseDate":"8/31/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":315000,
+    "SalesVolume":450000,
+    "Probability":70,
+    "OpportunityAge":57,
+    "DaysinStage":412
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":90831,
+    "DescriptionofaTransaction":"NEWPORT NEWS INDUSTRIAL SHIELD BLG",
+    "SalesOffice":"Cleveland-Factory",
+    "EmployeeResponsible":"Jason Doody",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"1/4/2013",
+    "CloseDate":"4/30/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":202500,
+    "SalesVolume":405000,
+    "Probability":50,
+    "OpportunityAge":599,
+    "DaysinStage":564
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":90855,
+    "DescriptionofaTransaction":"SCHECK MECHANICAL - DIRECT CUSTOMER",
+    "SalesOffice":"Milwaukee",
+    "EmployeeResponsible":"Michael Kersey",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"1/4/2013",
+    "CloseDate":"3/30/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":45500,
+    "SalesVolume":70000,
+    "Probability":65,
+    "OpportunityAge":599,
+    "DaysinStage":563
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":90891,
+    "DescriptionofaTransaction":"SKILLED TRADES/EDUCATION-UA 174-FUME SYS",
+    "SalesOffice":"Grand Rapids",
+    "EmployeeResponsible":"Jon Althausen",
+    "AnalysisStage":"Proposal / Quotation",
+    "CurrentPhase":"Proposal / Quotation",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"12/12/2013",
+    "CloseDate":"5/31/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":37800,
+    "SalesVolume":90000,
+    "Probability":42,
+    "OpportunityAge":257,
+    "DaysinStage":562
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":90909,
+    "DescriptionofaTransaction":"EXPERT/VERACITY-625/812SRC-ALLOY",
+    "SalesOffice":"Baton Rouge",
+    "EmployeeResponsible":"Matt Howerton",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"1/14/2014",
+    "CloseDate":"7/30/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":60000,
+    "SalesVolume":200000,
+    "Probability":30,
+    "OpportunityAge":224,
+    "DaysinStage":193
+  },
+  {
+    "RiskValue":0.3,
+    "RiskCategory":"4 - MED-LOW",
+    "TransactionNumber":90912,
+    "DescriptionofaTransaction":"BREAKOUT - INTERMOUNTAIN LIFT - HDC",
+    "SalesOffice":"Salt Lake City",
+    "EmployeeResponsible":"Jenny Farney",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"< 90 Days",
+    "StageAgeRange":"< = 30 Days",
+    "StartOpp":"7/31/2014",
+    "CloseDate":"8/31/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":24000,
+    "SalesVolume":80000,
+    "Probability":30,
+    "OpportunityAge":26,
+    "DaysinStage":26
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":90973,
+    "DescriptionofaTransaction":"AXH COOLERS - STAINLESS CONSUMABLES",
+    "SalesOffice":"Tulsa",
+    "EmployeeResponsible":"David Thomas",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/24/2012",
+    "CloseDate":"7/31/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":140000,
+    "SalesVolume":175000,
+    "Probability":80,
+    "OpportunityAge":854,
+    "DaysinStage":552
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91208,
+    "DescriptionofaTransaction":"ESAB...WEIR AMERICAN HYDRO...UC 308 FCP",
+    "SalesOffice":"Philadelphia",
+    "EmployeeResponsible":"David Watson",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"31 - 60 Days",
+    "StartOpp":"2/25/2014",
+    "CloseDate":"8/22/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":90000,
+    "SalesVolume":300000,
+    "Probability":30,
+    "OpportunityAge":182,
+    "DaysinStage":48
+  },
+  {
+    "RiskValue":0.69,
+    "RiskCategory":"2 - MED-HIGH",
+    "TransactionNumber":91243,
+    "DescriptionofaTransaction":"ESAB - NORTHWEST PIPE - L-61",
+    "SalesOffice":"Denver",
+    "EmployeeResponsible":"Matt Rice",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"91 - 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/24/2014",
+    "CloseDate":"8/1/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":38576.7,
+    "SalesVolume":128589,
+    "Probability":30,
+    "OpportunityAge":124,
+    "DaysinStage":285
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91275,
+    "DescriptionofaTransaction":"ALLOY- METAL TEK - METRODE",
+    "SalesOffice":"Milwaukee",
+    "EmployeeResponsible":"Timothy Echan",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"3/20/2013",
+    "CloseDate":"12/1/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":500000,
+    "SalesVolume":1000000,
+    "Probability":50,
+    "OpportunityAge":524,
+    "DaysinStage":524
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91296,
+    "DescriptionofaTransaction":"MARTINREA PURCHASE A HOT WIRE TANDEM",
+    "SalesOffice":"Detroit",
+    "EmployeeResponsible":"John Ludwig",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"3/15/2013",
+    "CloseDate":"5/31/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":125000,
+    "SalesVolume":250000,
+    "Probability":50,
+    "OpportunityAge":529,
+    "DaysinStage":516
+  },
+  {
+    "RiskValue":0.78,
+    "RiskCategory":"2 - MED-HIGH",
+    "TransactionNumber":91301,
+    "DescriptionofaTransaction":"ALLOY - HEIL TRAILER - 5356TM",
+    "SalesOffice":"Dallas",
+    "EmployeeResponsible":"Chris Barret",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"91 - 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/7/2014",
+    "CloseDate":"12/31/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":38280,
+    "SalesVolume":382800,
+    "Probability":10,
+    "OpportunityAge":141,
+    "DaysinStage":141
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91304,
+    "DescriptionofaTransaction":"GOLIGHTLY PURCHASD A VRTEX 360",
+    "SalesOffice":"Detroit",
+    "EmployeeResponsible":"John Ludwig",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"3/4/2013",
+    "CloseDate":"4/23/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":24500,
+    "SalesVolume":49000,
+    "Probability":50,
+    "OpportunityAge":540,
+    "DaysinStage":519
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91305,
+    "DescriptionofaTransaction":"ERNEST PURCHASE A 4 ARM CENTRAL EXHAUST",
+    "SalesOffice":"Detroit",
+    "EmployeeResponsible":"John Ludwig",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"3/11/2013",
+    "CloseDate":"4/30/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":17250,
+    "SalesVolume":34500,
+    "Probability":50,
+    "OpportunityAge":533,
+    "DaysinStage":519
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91306,
+    "DescriptionofaTransaction":"MARTINNREA PURCHASE 3 PUSH PULL SYSTEMS",
+    "SalesOffice":"Detroit",
+    "EmployeeResponsible":"John Ludwig",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"3/4/2013",
+    "CloseDate":"5/30/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":256900,
+    "SalesVolume":367000,
+    "Probability":70,
+    "OpportunityAge":540,
+    "DaysinStage":519
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91361,
+    "DescriptionofaTransaction":"AUTOMATION - BETTS SPRING - ROBOT",
+    "SalesOffice":"Northern California",
+    "EmployeeResponsible":"Walter Aviko",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"3/1/2013",
+    "CloseDate":"11/30/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":90000,
+    "SalesVolume":150000,
+    "Probability":60,
+    "OpportunityAge":543,
+    "DaysinStage":530
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91427,
+    "DescriptionofaTransaction":"BREAKOUT - TOWER - SUPERARC MIG",
+    "SalesOffice":"Cleveland",
+    "EmployeeResponsible":"Aaron Oyster",
+    "AnalysisStage":"Proposal / Quotation",
+    "CurrentPhase":"Proposal / Quotation",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"11/1/2013",
+    "CloseDate":"6/30/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":94500,
+    "SalesVolume":135000,
+    "Probability":70,
+    "OpportunityAge":298,
+    "DaysinStage":140
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91470,
+    "DescriptionofaTransaction":"A K  ALLEN CO- MIG AND TIG MACHINES",
+    "SalesOffice":"Philadelphia",
+    "EmployeeResponsible":"MICHAEL SOTTILE",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/12/2013",
+    "CloseDate":"5/31/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":2800,
+    "SalesVolume":14000,
+    "Probability":20,
+    "OpportunityAge":501,
+    "DaysinStage":498
+  },
+  {
+    "RiskValue":0.69,
+    "RiskCategory":"2 - MED-HIGH",
+    "TransactionNumber":91533,
+    "DescriptionofaTransaction":"BREAKOUT-DIDION MFG-MC706",
+    "SalesOffice":"Saint Louis",
+    "EmployeeResponsible":"Bradley Wickline",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"91 - 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/24/2014",
+    "CloseDate":"12/30/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":6840,
+    "SalesVolume":22800,
+    "Probability":30,
+    "OpportunityAge":124,
+    "DaysinStage":109
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91545,
+    "DescriptionofaTransaction":"TIMKEN-LC 414N",
+    "SalesOffice":"Cleveland",
+    "EmployeeResponsible":"Theodore Pinnick",
+    "AnalysisStage":"Decision Making",
+    "CurrentPhase":"Decision Making",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"2/21/2013",
+    "CloseDate":"5/24/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":321804,
+    "SalesVolume":357560,
+    "Probability":90,
+    "OpportunityAge":551,
+    "DaysinStage":210
+  },
+  {
+    "RiskValue":0.69,
+    "RiskCategory":"2 - MED-HIGH",
+    "TransactionNumber":91546,
+    "DescriptionofaTransaction":"BREAKOUT-ALLMAND BRO-MC80NI1-",
+    "SalesOffice":"Kansas City",
+    "EmployeeResponsible":"Bruce Gregory",
+    "AnalysisStage":"Proposal / Quotation",
+    "CurrentPhase":"Proposal / Quotation",
+    "OppAgeRange":"91 - 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/24/2014",
+    "CloseDate":"6/30/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":60000,
+    "SalesVolume":120000,
+    "Probability":50,
+    "OpportunityAge":124,
+    "DaysinStage":504
+  },
+  {
+    "RiskValue":0.69,
+    "RiskCategory":"2 - MED-HIGH",
+    "TransactionNumber":91573,
+    "DescriptionofaTransaction":"ALLOY-VAN AM-BLUE MAX 308",
+    "SalesOffice":"Kansas City",
+    "EmployeeResponsible":"Brian V Sullivan",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"91 - 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/24/2014",
+    "CloseDate":"7/31/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":30000,
+    "SalesVolume":100000,
+    "Probability":30,
+    "OpportunityAge":124,
+    "DaysinStage":113
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91580,
+    "DescriptionofaTransaction":"FCAW - KEPPEL AMFELS - ULTRACORE",
+    "SalesOffice":"Houston",
+    "EmployeeResponsible":"Matt Terrell",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/1/2013",
+    "CloseDate":"4/30/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":365000,
+    "SalesVolume":730000,
+    "Probability":50,
+    "OpportunityAge":512,
+    "DaysinStage":480
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91616,
+    "DescriptionofaTransaction":"ALLOY: MICROFLEX - STAINLESS STEEL",
+    "SalesOffice":"Orlando",
+    "EmployeeResponsible":"Jim Issa",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/1/2013",
+    "CloseDate":"3/31/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":45000,
+    "SalesVolume":90000,
+    "Probability":50,
+    "OpportunityAge":512,
+    "DaysinStage":481
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91631,
+    "DescriptionofaTransaction":"NAPOTNIK WELDING - ROBOT",
+    "SalesOffice":"Pittsburgh",
+    "EmployeeResponsible":"Warren Krueger",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"3/21/2013",
+    "CloseDate":"6/20/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":22500,
+    "SalesVolume":90000,
+    "Probability":25,
+    "OpportunityAge":523,
+    "DaysinStage":499
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91667,
+    "DescriptionofaTransaction":"WIRE - SUPERIOR FAB - L59",
+    "SalesOffice":"Tulsa",
+    "EmployeeResponsible":"Gerald Fleming",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"5/8/2013",
+    "CloseDate":"8/29/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":30000,
+    "SalesVolume":50000,
+    "Probability":60,
+    "OpportunityAge":475,
+    "DaysinStage":475
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91697,
+    "DescriptionofaTransaction":"ALLOY - INDUSTRIAL FAB - TECHALLOY",
+    "SalesOffice":"Houston",
+    "EmployeeResponsible":"Matt Terrell",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/1/2013",
+    "CloseDate":"11/30/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":24750,
+    "SalesVolume":49500,
+    "Probability":50,
+    "OpportunityAge":512,
+    "DaysinStage":236
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91818,
+    "DescriptionofaTransaction":"ALLOY  KENNAMETAL,TRICON  LINCORE 65(NEW",
+    "SalesOffice":"Birmingham",
+    "EmployeeResponsible":"Ronald Martucci",
+    "AnalysisStage":"Decision Making",
+    "CurrentPhase":"Decision Making",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"8/1/2013",
+    "CloseDate":"7/31/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":640000,
+    "SalesVolume":800000,
+    "Probability":80,
+    "OpportunityAge":390,
+    "DaysinStage":469
+  },
+  {
+    "RiskValue":0.99,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91837,
+    "DescriptionofaTransaction":"MACHINE - SFI - POWER WAVES S350",
+    "SalesOffice":"Tulsa",
+    "EmployeeResponsible":"Gerald Fleming",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"91 - 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"3/1/2014",
+    "CloseDate":"8/29/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":8100,
+    "SalesVolume":27000,
+    "Probability":30,
+    "OpportunityAge":178,
+    "DaysinStage":453
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91858,
+    "DescriptionofaTransaction":"7MM SCHOOL LOCAL 16  20 WELD SCHOOL",
+    "SalesOffice":"Washington",
+    "EmployeeResponsible":"B.A. WYATT MANN",
+    "AnalysisStage":"Proposal / Quotation",
+    "CurrentPhase":"Proposal / Quotation",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"5/10/2013",
+    "CloseDate":"6/30/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":101250,
+    "SalesVolume":135000,
+    "Probability":75,
+    "OpportunityAge":473,
+    "DaysinStage":473
+  },
+  {
+    "RiskValue":0.82,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91870,
+    "DescriptionofaTransaction":"ALLOY-UNION PACIFIC-FROG MANG-DIRECT",
+    "SalesOffice":"Kansas City",
+    "EmployeeResponsible":"Paul Hannen",
+    "AnalysisStage":"Proposal / Quotation",
+    "CurrentPhase":"Proposal / Quotation",
+    "OppAgeRange":"91 - 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/1/2014",
+    "CloseDate":"6/30/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":175000,
+    "SalesVolume":250000,
+    "Probability":70,
+    "OpportunityAge":147,
+    "DaysinStage":109
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91928,
+    "DescriptionofaTransaction":"MODERN TANK HARD AUTOMATION SAW",
+    "SalesOffice":"Cincinnati",
+    "EmployeeResponsible":"Bobby Delcoco",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"5/14/2013",
+    "CloseDate":"2/28/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":200000,
+    "SalesVolume":400000,
+    "Probability":50,
+    "OpportunityAge":469,
+    "DaysinStage":463
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91954,
+    "DescriptionofaTransaction":"7MM - BOARDMAN - STAINLESS",
+    "SalesOffice":"Tulsa",
+    "EmployeeResponsible":"Gerald Fleming",
+    "AnalysisStage":"Proposal / Quotation",
+    "CurrentPhase":"Proposal / Quotation",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"5/14/2013",
+    "CloseDate":"12/31/2013",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":140000,
+    "SalesVolume":200000,
+    "Probability":70,
+    "OpportunityAge":469,
+    "DaysinStage":469
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":91958,
+    "DescriptionofaTransaction":"HCC - ESAB - L-50 / L-56",
+    "SalesOffice":"Chicago",
+    "EmployeeResponsible":"Andy Divin",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"4/26/2013",
+    "CloseDate":"4/30/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":133552.8,
+    "SalesVolume":166941,
+    "Probability":80,
+    "OpportunityAge":487,
+    "DaysinStage":469
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":92107,
+    "DescriptionofaTransaction":"ALLOY - ALSTOM POWER - HARDSURFACING",
+    "SalesOffice":"Dallas",
+    "EmployeeResponsible":"Johnny Harvill",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"5/1/2013",
+    "CloseDate":"12/31/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":375000,
+    "SalesVolume":1250000,
+    "Probability":30,
+    "OpportunityAge":482,
+    "DaysinStage":419
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":92130,
+    "DescriptionofaTransaction":"EDUCATION-RICHLAND CC-NEW WELDING SCHOOL",
+    "SalesOffice":"Chicago",
+    "EmployeeResponsible":"Andrew Young",
+    "AnalysisStage":"Decision Making",
+    "CurrentPhase":"Decision Making",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"6/28/2013",
+    "CloseDate":"9/30/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":125100,
+    "SalesVolume":139000,
+    "Probability":90,
+    "OpportunityAge":424,
+    "DaysinStage":115
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":92245,
+    "DescriptionofaTransaction":"SCHOOL - NTCC - CENTRAL SYS.",
+    "SalesOffice":"Dallas",
+    "EmployeeResponsible":"Johnny Harvill",
+    "AnalysisStage":"Decision Making",
+    "CurrentPhase":"Decision Making",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"1/1/2013",
+    "CloseDate":"12/31/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":162000,
+    "SalesVolume":180000,
+    "Probability":90,
+    "OpportunityAge":602,
+    "DaysinStage":419
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":92268,
+    "DescriptionofaTransaction":"ALLOY-HOOVER-STAINLESS",
+    "SalesOffice":"Houston",
+    "EmployeeResponsible":"Tara Napolillo",
+    "AnalysisStage":"Proposal / Quotation",
+    "CurrentPhase":"Proposal / Quotation",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"7/7/2013",
+    "CloseDate":"7/7/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":140000,
+    "SalesVolume":200000,
+    "Probability":70,
+    "OpportunityAge":415,
+    "DaysinStage":415
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":92269,
+    "DescriptionofaTransaction":"HOBART - PINNACLE MATERIALS - L-59 CONV",
+    "SalesOffice":"Dallas",
+    "EmployeeResponsible":"Tony Treser",
+    "AnalysisStage":"Info Exchange",
+    "CurrentPhase":"Info Exchange",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"7/7/2013",
+    "CloseDate":"1/31/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":105000,
+    "SalesVolume":210000,
+    "Probability":50,
+    "OpportunityAge":415,
+    "DaysinStage":415
+  },
+  {
+    "RiskValue":1,
+    "RiskCategory":"1 - HIGH",
+    "TransactionNumber":92297,
+    "DescriptionofaTransaction":"AUTOMATION/ENVIRONMENTAL-K LINE-SYS 55",
+    "SalesOffice":"Grand Rapids",
+    "EmployeeResponsible":"Jon Althausen",
+    "AnalysisStage":"Solution Development",
+    "CurrentPhase":"Solution Development",
+    "OppAgeRange":"> 180 Days",
+    "StageAgeRange":"> 60 Days",
+    "StartOpp":"11/28/2013",
+    "CloseDate":"9/1/2014",
+    "Priority":"Targeted Opportunity",
+    "SalesVolume(w)":120000,
+    "SalesVolume":200000,
+    "Probability":60,
+    "OpportunityAge":271,
+    "DaysinStage":414
+  }
+] ); 
+
+// Create crossfilter
+var oppts_cf = crossfilter(oppts);
+var opptsBySalesOffice = oppts_cf.dimension(function(d) { return d.SalesOffice; });
+var opptsSalesVolumeBySalesOffice = opptsBySalesOffice.group().reduceSum( function(d) {return d.SalesVolume; });            
+var mydata = opptsSalesVolumeBySalesOffice.top(Infinity);            
+            
+//Width and height
+var w = 600;
+var h = 800;
+var chartWidth = 500
+var chartHeight = 300            
+var padding = 30;
+
+//Create scale functions
+var xScale = d3.scale.linear()
+                     .domain([0, d3.max(oppts, function(d) { return d.OpportunityAge; })])
+                     .range([padding, chartWidth - padding * 2]);
+
+var yScale = d3.scale.linear()
+                     .domain([0, d3.max(oppts, function(d) { return d.Probability; })])
+                     .range([chartHeight - padding, padding]);
+
+//Define X axis
+var xAxis = d3.svg.axis()
+                  .scale(xScale)
+                  .orient("bottom")
+                  .ticks(5);
+
+//Define Y axis
+var yAxis = d3.svg.axis()
+                  .scale(yScale)
+                  .orient("left")
+                  .ticks(5);
+
+//Create SVG chart element
+var svg = d3.select("body")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+//Create SVG text element
+var svg2 = d3.select("body")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);            
+            
+//Create circles
+svg.selectAll("circle")
+   .data(oppts)
+   .enter()
+   .append("circle")
+   .attr("cx", function(d) {
+        return xScale(d.OpportunityAge);
+   })
+   .attr("cy", function(d) {
+        return yScale(d.Probability);
+   })
+   .attr("r", 2);
+
+//Create X axis
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + (chartHeight - padding) + ")")
+    .call(xAxis);
+
+//Create Y axis
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(" + padding + ",0)")
+    .call(yAxis);
+
+//Create SaleOffice lables
+var mytext = svg2.selectAll("text")
+    .data(mydata)
+    .enter()
+    .append("text");
+            
+var soLables = mytext
+    .text( function(d, i) {return i + ") " + d.key; })
+    .attr("x", padding)
+    .attr("y", function(d, i) {
+          return (i *20 +20);
+            })
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "20px")
+    .attr("fill", "blue")
+    .onclick();
+            
+
+//On click, update with new data			
+d3.select("p")
+    .on("click", function() {
+
+        var numValues = oppts.length;						 		//Count original length of oppts
+
+        //Update scale domains
+        xScale.domain([0, d3.max(oppts, function(d) { return d.OpportunityAge; })]);
+        yScale.domain([0, d3.max(oppts, function(d) { return d.Probability; })]);
+
+        //Update all circles
+        svg.selectAll("circle")
+           .data(oppts)
+           .transition()
+           .duration(1000)
+           .attr("cx", function(d) {
+                return xScale(d.OpportunityAge);
+           })
+           .attr("cy", function(d) {
+                return yScale(d.Probability);
+           });
+
+    });
+
+          
+
+		</script>
+	</body>
+</html>
