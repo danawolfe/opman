@@ -1044,11 +1044,11 @@ var padding = 30;
 
 //Create scale functions
 var xScale = d3.scale.linear()
-                     .domain([0, d3.max(oppts, function(d) { return d.OpportunityAge; })])
+                     .domain([0, d3.max(mydata, function(d) { return d.OpportunityAge; })])
                      .range([padding, chartWidth - padding * 2]);
 
 var yScale = d3.scale.linear()
-                     .domain([0, d3.max(oppts, function(d) { return d.Probability; })])
+                     .domain([0, d3.max(mydata, function(d) { return d.Probability; })])
                      .range([chartHeight - padding, padding]);
 
 //Define X axis
@@ -1107,7 +1107,7 @@ var mytext = svg2.selectAll("text")
     .append("text");
             
 var soLables = mytext
-    .text( function(d, i) {return i + ") " + d.key; })
+    .text( function(d, i) {return d.key; })
     .attr("x", padding)
     .attr("y", function(d, i) {
           return (i *20 +20);
@@ -1115,23 +1115,29 @@ var soLables = mytext
     .attr("font-family", "sans-serif")
     .attr("font-size", "20px")
     .attr("fill", "blue")
-    .onclick();
-            
-
-//On click, update with new data			
-d3.select("p")
     .on("click", function() {
+        console.log(this.textContent);
+        opptsBySalesOffice.filter(this.textContent);
+        mydata = opptsBySalesOffice.top(Infinity);
+        
+        var numValues = mydata.length;
+                
+        var circles = svg.selectAll("circle")
+                        .data(mydata);
+        //Enter…
+        circles.enter()
+            .append("circle")
+            .attr("cx", function(d) {
+                console.log(xScale(d.OpportunityAge));
+                return xScale(d.OpportunityAge);
+                })
+            .attr("cy", function(d) {
+                console.log(yScale(d.Probability));
+                return yScale(d.Probability);
+                })
+            .attr("r", 2);
 
-        var numValues = oppts.length;						 		//Count original length of oppts
-
-        //Update scale domains
-        xScale.domain([0, d3.max(oppts, function(d) { return d.OpportunityAge; })]);
-        yScale.domain([0, d3.max(oppts, function(d) { return d.Probability; })]);
-
-        //Update all circles
-        svg.selectAll("circle")
-           .data(oppts)
-           .transition()
+           circles.transition()
            .duration(1000)
            .attr("cx", function(d) {
                 return xScale(d.OpportunityAge);
@@ -1140,9 +1146,19 @@ d3.select("p")
                 return yScale(d.Probability);
            });
 
-    });
+        circles.exit()				//References the exit selection (a subset of the update selection)
+		  .transition()		//Initiates a transition on the one element we're deleting
+		  .duration(500)
+		  .attr("x", w)		//Move past the right edge of the SVG
+		  .remove();   		//Deletes this element from the DOM once transition is complete
+        
 
-          
+    });
+    
+    
+            
+
+
 
 		</script>
 	</body>
